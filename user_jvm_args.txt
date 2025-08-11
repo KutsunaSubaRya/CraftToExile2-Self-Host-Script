@@ -1,0 +1,11 @@
+# Xmx and Xms set the maximum and minimum RAM usage, respectively.
+# They can take any number, followed by an M or a G.
+# M means Megabyte, G means Gigabyte.
+# For example, to set the maximum to 3GB: -Xmx3G
+# To set the minimum to 2.5GB: -Xms2500M
+
+# A good default for a modded server is 4GB.
+# Uncomment the next line to set it.
+# -Xmx4G
+
+-XX:+UnlockExperimentalVMOptions -Xms10G -Xmx12G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:G1NewSizePercent=20 -XX:G1MaxNewSizePercent=60 -XX:G1ReservePercent=20 -XX:InitiatingHeapOccupancyPercent=15 -XX:+UseStringDeduplication -XX:+DisableExplicitGC -Xlog:gc*,safepoint:file=logs/gc-%t-%p.log:time,uptime,level,tags:filecount=10,filesize=20M -XX:StartFlightRecording=name=MC,filename=logs/jfr-%p-%t.jfr,maxage=24h,maxsize=1g,settings=profile -XX:FlightRecorderOptions=stackdepth=128
