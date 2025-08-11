@@ -1,6 +1,6 @@
 # CraftToExile2 Self-Host Script
 
-*This article can also be read in [Traditional Chinese](README-zh-TW.md).*
+*This article can also be read in [Traditional Chinese(繁體中文)](README-zh-TW.md).*
 
 A comprehensive automation suite for self-hosting a CraftToExile2 Minecraft server with automated tunnel management, monitoring, and maintenance.
 
