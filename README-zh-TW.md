@@ -1,5 +1,7 @@
 # CraftToExile2 伺服器端自動化腳本
 
+*此文章也有 [原文(英文)](README.md)。*
+
 一套完整的自動化套件，用於自架 CraftToExile2 Minecraft 伺服器，具備自動化管理、監控和維護功能。
 
 ## 概述
