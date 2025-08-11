@@ -46,19 +46,19 @@ The system operates through a coordinated workflow managed by cron jobs:
 
 | Script | Purpose | Cron Schedule | Description |
 |--------|---------|---------------|-------------|
-| `start.sh` | Minecraft Server Launcher | On server boot | Initializes and starts the Minecraft server in a named screen session |
+| `start.sh` | Minecraft Server Launcher | On server boot | Initializes and starts the Minecraft server in a named `screen` session |
 | `cloudflared_tunnel_start.sh` | Tunnel Manager | On server boot | Establishes Cloudflare tunnel for external server access |
 | `rcon-spark.sh` | Performance Monitor | Every 5 minutes | Collects server performance metrics and health data |
 | `archive-logs.sh` | Log Management | Daily | Archives old log files and maintains backup rotation |
-| `mc-restart.sh` | Server Control | Manual/On-demand | Handles graceful server restarts with countdown notifications |
+| `mc-restart.sh` | Server Control | On-demand/Every 6 hours | Handles graceful server restarts with countdown notifications |
 
 ## Dependencies
 
-- **screen**: Terminal multiplexer for background process management
-- **cloudflared**: Cloudflare tunnel client for external access
-- **mcrcon**: RCON client for Minecraft server communication
-- **zip/tar**: Archive utilities for log compression
-- **openjdk-21-jdk**
+- **`screen`**: Terminal multiplexer for background process management
+- **`cloudflared`**: Cloudflare tunnel client for external access
+- **`mcrcon`**: RCON client for Minecraft server communication
+- **`zip/tar`**: Archive utilities for log compression
+- **`openjdk-21-jdk`**
 
 ## JVM Configuration
 
@@ -169,14 +169,15 @@ The `user_jvm_args.txt` file contains optimized JVM parameters for modded Minecr
 **Purpose**: Graceful server restart management with player notifications.
 
 **Key Features**:
-- Multiple restart modes (5-minute, 30-second, 15-second, immediate)
+- Provides manual execution options
+- Multiple restart modes (5-minute, 30-second, 15-second, immediate shutdown instead restart)
 - In-game countdown notifications with sound effects
 - Single-instance locking to prevent cron conflicts
 - Automatic server restart after shutdown
 - Built-in help system with `--help` flag
 - Input validation and error handling for unknown options
 
-**Cron Integration**: Manual execution or scheduled maintenance windows.
+**Cron Integration**: Default is triggered every 6 hours via crontab.
 
 **Technical Details**:
 - Uses `flock` for single-instance execution prevention
@@ -197,9 +198,13 @@ Recommended cron schedule for automated operation:
 @reboot /path/to/cloudflared_tunnel_start.sh
 @reboot sleep 15 && /path/to/start.sh
 
+# Restart every 6 hours
 0 */6 * * * /path/to/mc-restart.sh
+
+# Performance monitoring (every 15 minutes)
 */15 * * * * /path/to/rcon-spark.sh
 
+# Log archiving (daily at 4 AM)
 0 4 * * * /path/to/archive-logs.sh
 ```
 
@@ -241,7 +246,11 @@ Query current online players using mcrcon:
 /usr/bin/mcrcon -H 127.0.0.1 -P 25575 -p 'yourPassword' "list"
 ```
 
+### Other Inspection Methods
+* Check other log contents for analysis:
+  * `gc-*.log`
+  * `jfr-*.jfr`
+    * Use CLI tools
+    * `scp` the JFR files to your Windows machine to view with JMC (Java Mission Control) tool
+
 **Note**: Replace `yourPassword` with your actual RCON password. The default mcrcon path is `/usr/bin/mcrcon`, but you can verify the correct path with `which mcrcon`.
-
-
-
