@@ -31,11 +31,38 @@ This project provides complete scripts that explain automated management of Mine
 - **Minecraft**: 1.20.1
 
 ### Hardware Specifications
+
+#### My Current Configuration
 - **CPU**: 4 cores
 - **RAM**: 14 GB
 - **Environment**: PVE VM (Proxmox Virtual Environment)
+- **OS**: Ubuntu 24.04
 
 **Note**: This configuration has been tested and optimized for optimal performance. While the scripts will work on other configurations, this setup provides a reliable baseline for modded Minecraft servers with 8+ concurrent players, and can be dynamically adjusted based on operational needs and changes in your community size.
+
+#### Minecraft Vanilla Official Recommendations
+- **RAM**: 2-4 GB allocated (minimum 1 GB)
+- **CPU**: 1+ cores for small servers, 2+ cores for medium servers
+- **Storage**: SSD recommended for better performance
+- **Java**: OpenJDK 17+ or Oracle Java 17+
+
+**Note**: Vanilla servers require significantly less resources than modded servers. These are [community recommendations for vanilla Minecraft servers](https://minecraft.fandom.com/wiki/Server/Requirements) based on extensive testing and experience.
+
+**Reference**: For more detailed vanilla server requirements and recommendations, you can refer to [Minecraft Wiki - Server Requirements](https://minecraft.fandom.com/wiki/Server/Requirements).
+
+#### CTE2 Official Recommendations
+- **RAM**: At least 4-8 GB allocated
+- **CPU**: 2+ cores recommended for small servers, 4+ cores for medium servers
+- **Storage**: SSD recommended for better performance
+
+**Reference**: [Craft To Exile 2 - Server Setup, Updating, LAN, Administrative Commands](https://github.com/mahjerion/Craft-to-Exile-2/wiki/Server-Setup,-Updating,-LAN,-Administrative-Commands)
+
+#### Important
+The JVM arguments in `user_jvm_args.txt` are currently configured for 14 GB RAM allocation (`-Xms10G -Xmx12G`). If you use different hardware specifications, you **must** adjust these values accordingly:
+- For 4 GB RAM: Use `-Xms2G -Xmx3G`
+- For 8 GB RAM: Use `-Xms6G -Xmx7G`
+- For 16 GB RAM: Use `-Xms12G -Xmx14G`
+- Always leave 1-2 GB free for the operating system and other processes
 
 ## Workflow
 

@@ -31,11 +31,38 @@
 - **Minecraft**：1.20.1
 
 ### 硬體規格
+
+#### 目前測試配置
 - **CPU**：4 核心
 - **RAM**：14 GB
 - **環境**：PVE VM（Proxmox 虛擬環境）
+- **作業系統**：Ubuntu 24.04
 
 **注意**：此配置已測試並優化以獲得最佳效能。雖然腳本可在其他配置上運作，但此設定為 8+ 同時在線玩家的模組化 Minecraft 伺服器提供的基準，可以根據維運與您的客群數的變化而動態調整本腳本。
+
+#### Minecraft Vanilla 官方推薦配置
+- **RAM**：分配 2-4 GB（最少 1 GB）
+- **CPU**：小型伺服器建議 1+ 核心，中型伺服器建議 2+ 核心
+- **儲存**：建議使用 SSD 以獲得更好效能
+- **Java**：OpenJDK 17+ 或 Oracle Java 17+
+
+**注意**：Vanilla (原生無模組)伺服器比模組化伺服器需要顯著更少的資源。這些是基於廣泛測試和[社群建議](https://minecraft.fandom.com/wiki/Server/Requirements)。
+
+**參考資料**：如需更詳細的 vanilla (原生無模組)伺服器需求和建議，您可以參考 [Minecraft Wiki - 伺服器需求](https://minecraft.fandom.com/wiki/Server/Requirements)。
+
+#### CTE2 官方推薦配置
+- **RAM**：至少分配 4-8 GB
+- **CPU**：小型伺服器建議 2+ 核心，中型伺服器建議 4+ 核心
+- **儲存**：建議使用 SSD 以獲得更好效能
+
+**參考資料**: [Craft To Exile 2 - Server Setup, Updating, LAN, Administrative Commands](https://github.com/mahjerion/Craft-to-Exile-2/wiki/Server-Setup,-Updating,-LAN,-Administrative-Commands)
+
+#### 重要提醒
+`user_jvm_args.txt` 中的 JVM 參數目前配置為 14 GB RAM 分配（`-Xms10G -Xmx12G`）。如果您使用不同的硬體規格，您**必須**相應調整這些值：
+- 對於 4 GB RAM：使用 `-Xms2G -Xmx3G`
+- 對於 8 GB RAM：使用 `-Xms6G -Xmx7G`
+- 對於 16 GB RAM：使用 `-Xms12G -Xmx14G`
+- 始終為作業系統和其他程序保留 1-2 GB 空間
 
 ## 工作流程
 
