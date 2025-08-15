@@ -9,8 +9,6 @@ This document uses self-hosted CraftToExile2 as an example and explanation.
 
 This project provides complete scripts that explain automated management of Minecraft Server Pack servers, Minecraft Server startup, Cloudflare tunnel management, performance monitoring, log archiving, and graceful server restarts through cron scheduling. It uses CraftToExile2 Mod Server Pack as an example for process and technical explanations.
 
-**Note**: **Although this document is basically displayed in full Chinese, most configuration terms and server-side configuration files are set in English, and the author used English documents with AI translation to create this Chinese document (hehe, opposite to most people www), so please also refer to README.md.**
-
 **Target Audience**: Currently, this project is designed for small to medium-sized communities with up to 8 concurrent players. This automation suite provides reference scripts for self-hosted modded Minecraft server administrators who want to implement automated management and monitoring systems.
 
 ## Quick Start Note
