@@ -12,7 +12,8 @@ RHOST=127.0.0.1
 RPORT=25575
 # TODO: replace with your own password
 RPASS='your_password'
-MCRCON="/usr/local/bin/mcrcon"
+# TODO: replace with your own mcrcon path
+MCRCON="path/to/mcrcon"
 
 # TODO: replace with your own tag and other custom settings
 TAG="[Your Tag]"
