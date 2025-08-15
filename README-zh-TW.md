@@ -1,12 +1,13 @@
-# CraftToExile2 伺服器端自動化腳本
+# Minecraft 伺服器端自動化腳本
 
 *此文章也有 [原文(英文 English)](README.md)。*
 
-一套完整的自動化套件，用於自架 CraftToExile2 Minecraft 伺服器，具備自動化管理、監控和維護功能。
+一套完整的自動化套件，可用於任意有無模組的自架 Minecraft 伺服器，具備自動化管理、監控和維護功能。
+本文件是以 自架 CraftToExile2 作為範例與講解。
 
 ## 概述
 
-本專案提供完整腳本，講述透過 cron 排程自動化管理 Minecraft CraftToExile2 Mod Server Pack 伺服器、MC Server 啟動、Cloudflare 通道管理、效能監控、日誌歸檔和優雅的伺服器重啟。
+本專案提供完整腳本，講述透過 cron 排程自動化管理 Minecraft Server Pack 伺服器、Minecraft Server 啟動、Cloudflare 通道管理、效能監控、日誌歸檔和優雅的伺服器重啟。以 CraftToExile2 Mod Server Pack 範例做流程上與技術上的解釋。
 
 **注意**: **雖然本文件基本上顯示全中文，但多數設定詞與 server 端設定檔案皆是使用英文做設定的，並且作者我是用英文文件搭配 AI 翻譯此文件成中文 (嘿嘿，跟大多數人相反吧 www)，還請搭配 README.md 觀看。**
 

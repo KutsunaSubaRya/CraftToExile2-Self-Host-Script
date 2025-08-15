@@ -1,28 +1,31 @@
-# CraftToExile2 Self-Host Script
+# Minecraft Server Automation Scripts
 
 *This article can also be read in [Traditional Chinese(繁體中文)](README-zh-TW.md).*
 
-A comprehensive automation suite for self-hosting a CraftToExile2 Minecraft server with automated tunnel management, monitoring, and maintenance.
+A comprehensive automation suite for any self-hosted Minecraft server with or without mods (Mod Server or Vanilla), featuring automated management, monitoring, and maintenance capabilities.
+This document uses self-hosted CraftToExile2 as an example and explanation.
 
 ## Overview
 
-This project provides a complete solution for running a CraftToExile2 modded Minecraft server with automated management through cron scheduling. The system handles server startup, Cloudflare tunnel management, performance monitoring, log archiving, and graceful server restarts.
+This project provides complete scripts that explain automated management of Minecraft Server Pack servers, Minecraft Server startup, Cloudflare tunnel management, performance monitoring, log archiving, and graceful server restarts through cron scheduling. It uses CraftToExile2 Mod Server Pack as an example for process and technical explanations.
 
-**Target Audience**: Designed for small to medium-sized communities with up to 8 concurrent players. This automation suite provides reference scripts for self-hosted modded Minecraft server administrators who want to implement automated management and monitoring systems.
+**Note**: **Although this document is basically displayed in full Chinese, most configuration terms and server-side configuration files are set in English, and the author used English documents with AI translation to create this Chinese document (hehe, opposite to most people www), so please also refer to README.md.**
+
+**Target Audience**: Currently, this project is designed for small to medium-sized communities with up to 8 concurrent players. This automation suite provides reference scripts for self-hosted modded Minecraft server administrators who want to implement automated management and monitoring systems.
 
 ## Quick Start Note
 
-**Important**: Before using these scripts, search for `TODO` annotations in the source code using `Ctrl + F` (or `Cmd + F` on macOS) to identify configuration values that need to be customized for your environment, such as:
+**Important**: Before using these scripts, please read this document thoroughly and search for `TODO` annotations in the source code using `Ctrl + F` (or `Cmd + F` on macOS) to identify configuration values that need to be customized for your environment, such as:
 - RCON passwords
 - Domain names
 - File paths
 - Server-specific settings
 
-**RCON Configuration**: Ensure your `server.properties` file has `rcon.password=` set to your desired password, as this is required for the monitoring and restart scripts to function properly.
+**RCON Configuration**: Ensure your `server.properties` file has `rcon.password=` set to your desired password, as this is **required** for the monitoring and restart scripts to function properly.
 
 ## Recommended Configuration
 
-### Software Versions
+### Mod and Core Versions
 - **CraftToExile2**: 1.0.5
 - **Forge**: 47.4.4
 - **Minecraft**: 1.20.1
@@ -32,13 +35,13 @@ This project provides a complete solution for running a CraftToExile2 modded Min
 - **RAM**: 14 GB
 - **Environment**: PVE VM (Proxmox Virtual Environment)
 
-**Note**: This configuration has been tested and optimized for optimal performance. While the scripts will work on other configurations, this setup provides a reliable baseline for modded Minecraft servers with 8+ concurrent players.
+**Note**: This configuration has been tested and optimized for optimal performance. While the scripts will work on other configurations, this setup provides a reliable baseline for modded Minecraft servers with 8+ concurrent players, and can be dynamically adjusted based on operational needs and changes in your community size.
 
 ## Workflow
 
 The system operates through a coordinated workflow managed by cron jobs:
 
-1. **Tunnel First**: Cron triggers `cloudflared_tunnel_start.sh` immediately on boot
+1. **Tunnel**: Cron triggers `cloudflared_tunnel_start.sh` immediately on boot
 2. **Delayed Server Start**: After 15 seconds, `start.sh` is executed to launch the Minecraft server
 3. **Sequential Execution**: Tunnel establishment precedes server startup to ensure external connectivity is ready
 4. **Continuous Operation**: The server runs continuously with automated monitoring and maintenance
