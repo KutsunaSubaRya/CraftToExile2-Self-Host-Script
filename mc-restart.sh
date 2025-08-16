@@ -53,6 +53,8 @@ Notes:
 EOF
 }
 
+isShutdown=false
+
 case "$MODE" in
   "" )
     TOTAL=300; marks=(300 240 180 120 60) ;;   # 5m/4m/3m/2m/60s
